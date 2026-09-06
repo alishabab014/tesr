@@ -1,0 +1,33 @@
+.customize-partial-edit-shortcut {
+	display: none;
+}
+.rt-active-element {
+    outline: 1px solid rgba(48,144,173,0.75) !important;
+    position: relative;
+}
+.rt-edit-shortcut {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f1f1f1;
+    padding: 5px 10px;
+    color: #444;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    z-index: 9;
+}
+.footer-column .rt-edit-shortcut {
+	width: 150px;
+}
+.promo-block .rt-edit-shortcut {
+	top: 0;
+}
+.topbar-menu-container .rt-edit-shortcut {
+	width: 100px;
+}
+.rt-edit-shortcut:hover {
+	cursor: pointer;
+	background: #e1e1e1;
+}

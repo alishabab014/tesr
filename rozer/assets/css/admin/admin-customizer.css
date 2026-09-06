@@ -1,0 +1,425 @@
+.customize-title-divider {
+	color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: #3b4b63;
+    margin: 0 -12px;
+    padding: 5px 15px;
+}
+.sub-divider {
+	border-bottom: 1px solid #ccc;
+    padding: 10px 0px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+#customize-controls img {
+	margin-right: 10px;
+}
+
+.select2-results__option:before {
+    font-family: 'roadthemes-icon' !important;
+    font-size: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+[id*=rt-bag-outline][class*=select2]:before {
+  content: "\e900";
+}
+[id*=rt-cart-outline][class*=select2]:before {
+  content: "\e901";
+}
+[id*=rt-bag][class*=select2]:before {
+  content: "\e902";
+}
+[id*=rt-handbag][class*=select2]:before {
+  content: "\e903";
+}
+[id*=rt-shopping-cart][class*=select2]:before {
+  content: "\e904";
+}
+[id*=rt-bag2][class*=select2]:before {
+  content: "\e905";
+}
+[id*=rt-shopping-cart-solid][class*=select2]:before {
+  content: "\e906";
+}
+[id*=rt-basket-outline][class*=select2]:before {
+  content: "\e907";
+}
+[id*=rt-shopping-basket-solid][class*=select2]:before {
+  content: "\e908";
+}
+[id*=rt-heart][class*=select2]:before {
+  content: "\e909";
+}
+[id*=rt-heart2][class*=select2]:before {
+  content: "\e90a";
+}
+[id*=rt-heart-solid][class*=select2]:before {
+  content: "\e90b";
+}
+[id*=rt-heart-outline][class*=select2]:before {
+  content: "\e90c";
+}
+[id*=rt-ios-heart-outline][class*=select2]:before {
+  content: "\e90d";
+}
+[id*=rt-shuffle][class*=select2]:before {
+  content: "\e90e";
+}
+[id*=rt-refresh][class*=select2]:before {
+  content: "\e90f";
+}
+[id*=rt-ios-shuffle][class*=select2]:before {
+  content: "\e910";
+}
+[id*=rt-ios-shuffle-strong][class*=select2]:before {
+  content: "\e911";
+}
+[id*=rt-repeat-outline][class*=select2]:before {
+  content: "\e912";
+}
+[id*=rt-sync-alt-solid][class*=select2]:before {
+  content: "\e913";
+}
+[id*=rt-star2][class*=select2]:before {
+  content: "\e914";
+}
+[id*=rt-star-solid][class*=select2]:before {
+  content: "\e915";
+}
+[id*=rt-star-half-alt-solid][class*=select2]:before {
+  content: "\e916";
+}
+[id*=rt-search][class*=select2]:before {
+  content: "\e917";
+}
+[id*=rt-magnifier][class*=select2]:before {
+  content: "\e918";
+}
+[id*=rt-search2][class*=select2]:before {
+  content: "\e919";
+}
+[id*=rt-loupe][class*=select2]:before {
+  content: "\e91a";
+}
+[id*=rt-search1][class*=select2]:before {
+  content: "\e91b";
+}
+[id*=rt-eye-outline][class*=select2]:before {
+  content: "\e91c";
+}
+[id*=rt-eye][class*=select2]:before {
+  content: "\e91d";
+}
+[id*=rt-look][class*=select2]:before {
+  content: "\e91e";
+}
+[id*=rt-eye2][class*=select2]:before {
+  content: "\e91f";
+}
+[id*=rt-bars-solid][class*=select2]:before {
+  content: "\e920";
+}
+[id*=rt-menu-outline][class*=select2]:before {
+  content: "\e921";
+}
+[id*=rt-navicon-round][class*=select2]:before {
+  content: "\e922";
+}
+[id*=rt-grid-outline][class*=select2]:before {
+  content: "\e923";
+}
+[id*=rt-grid][class*=select2]:before {
+  content: "\e924";
+}
+[id*=rt-grid2][class*=select2]:before {
+  content: "\e925";
+}
+[id*=rt-apps-outline][class*=select2]:before {
+  content: "\e926";
+}
+[id*=rt-apps-sharp][class*=select2]:before {
+  content: "\e927";
+}
+[id*=rt-list][class*=select2]:before {
+  content: "\e928";
+}
+[id*=rt-list-outline][class*=select2]:before {
+  content: "\e929";
+}
+[id*=rt-list-solid][class*=select2]:before {
+  content: "\e92a";
+}
+[id*=rt-arrow-down][class*=select2]:before {
+  content: "\e92b";
+}
+[id*=rt-arrow-left][class*=select2]:before {
+  content: "\e92c";
+}
+[id*=rt-arrow-right][class*=select2]:before {
+  content: "\e92d";
+}
+[id*=rt-arrow-up][class*=select2]:before {
+  content: "\e92e";
+}
+[id*=rt-logo-facebook][class*=select2]:before {
+  content: "\e92f";
+}
+[id*=rt-logo-google][class*=select2]:before {
+  content: "\e930";
+}
+[id*=rt-logo-pinterest][class*=select2]:before {
+  content: "\e931";
+}
+[id*=rt-logo-twitter][class*=select2]:before {
+  content: "\e932";
+}
+[id*=rt-logo-youtube][class*=select2]:before {
+  content: "\e933";
+}
+[id*=rt-logo-instagram][class*=select2]:before {
+  content: "\e934";
+}
+[id*=rt-logo-linkedin][class*=select2]:before {
+  content: "\e935";
+}
+[id*=rt-logo-rss][class*=select2]:before {
+  content: "\e936";
+}
+[id*=rt-logo-twitch][class*=select2]:before {
+  content: "\e937";
+}
+[id*=rt-0-facebook2][class*=select2]:before {
+  content: "\e938";
+}
+[id*=rt-1-twitter2][class*=select2]:before {
+  content: "\e939";
+}
+[id*=rt-2-youtube2][class*=select2]:before {
+  content: "\e93a";
+}
+[id*=rt-3-dribbble][class*=select2]:before {
+  content: "\e93b";
+}
+[id*=rt-4-facebook-f][class*=select2]:before {
+  content: "\e93c";
+}
+[id*=rt-5-google-plus-g][class*=select2]:before {
+  content: "\e93d";
+}
+[id*=rt-6-pinterest-p][class*=select2]:before {
+  content: "\e93e";
+}
+[id*=rt-close-outline][class*=select2]:before {
+  content: "\e93f";
+}
+[id*=rt-close-circle][class*=select2]:before {
+  content: "\e940";
+}
+[id*=rt-close-circle-outline][class*=select2]:before {
+  content: "\e941";
+}
+[id*=rt-person-outline][class*=select2]:before {
+  content: "\e942";
+}
+[id*=rt-person-circle-outline][class*=select2]:before {
+  content: "\e943";
+}
+[id*=rt-user][class*=select2]:before {
+  content: "\e944";
+}
+[id*=rt-user-circle][class*=select2]:before {
+  content: "\e945";
+}
+[id*=rt-call-outline][class*=select2]:before {
+  content: "\e946";
+}
+[id*=rt-call-sharp][class*=select2]:before {
+  content: "\e947";
+}
+[id*=rt-headphones][class*=select2]:before {
+  content: "\e948";
+}
+[id*=rt-headphones-mic][class*=select2]:before {
+  content: "\e949";
+}
+[id*=rt-headphones2][class*=select2]:before {
+  content: "\e94a";
+}
+[id*=rt-phone-volume-solid][class*=select2]:before {
+  content: "\e94b";
+}
+[id*=rt-phone-call][class*=select2]:before {
+  content: "\e94c";
+}
+[id*=rt-headset-outline][class*=select2]:before {
+  content: "\e94d";
+}
+[id*=rt-settings-outline][class*=select2]:before {
+  content: "\e94e";
+}
+[id*=rt-settings][class*=select2]:before {
+  content: "\e94f";
+}
+[id*=rt-shipping-fast-solid][class*=select2]:before {
+  content: "\e950";
+}
+[id*=rt-truck-solid][class*=select2]:before {
+  content: "\e951";
+}
+[id*=rt-ship-solid][class*=select2]:before {
+  content: "\e952";
+}
+[id*=rt-boat-outline][class*=select2]:before {
+  content: "\e953";
+}
+[id*=rt-rocket][class*=select2]:before {
+  content: "\e954";
+}
+[id*=rt-rocket-outline][class*=select2]:before {
+  content: "\e955";
+}
+[id*=rt-location-pin][class*=select2]:before {
+  content: "\e956";
+}
+[id*=rt-map-marked-alt-solid][class*=select2]:before {
+  content: "\e957";
+}
+[id*=rt-location-outline][class*=select2]:before {
+  content: "\e958";
+}
+[id*=rt-mail-outline][class*=select2]:before {
+  content: "\e959";
+}
+[id*=rt-mail-open-outline][class*=select2]:before {
+  content: "\e95a";
+}
+[id*=rt-globe-solid][class*=select2]:before {
+  content: "\e95b";
+}
+[id*=rt-globe-alt][class*=select2]:before {
+  content: "\e95c";
+}
+[id*=rt-scan-outline][class*=select2]:before {
+  content: "\e95d";
+}
+[id*=rt-expand-outline][class*=select2]:before {
+  content: "\e95e";
+}
+[id*=rt-checkmark][class*=select2]:before {
+  content: "\e95f";
+}
+[id*=rt-card-outline][class*=select2]:before {
+  content: "\e960";
+}
+[id*=rt-credit-card-solid][class*=select2]:before {
+  content: "\e961";
+}
+[id*=rt-money-bill-wave-solid][class*=select2]:before {
+  content: "\e962";
+}
+[id*=rt-cash-outline][class*=select2]:before {
+  content: "\e963";
+}
+[id*=rt-gift-outline][class*=select2]:before {
+  content: "\e964";
+}
+[id*=rt-gift-solid][class*=select2]:before {
+  content: "\e965";
+}
+[id*=rt-gifts-solid][class*=select2]:before {
+  content: "\e966";
+}
+[id*=rt-ribbon-outline][class*=select2]:before {
+  content: "\e967";
+}
+[id*=rt-time-outline][class*=select2]:before {
+  content: "\e968";
+}
+[id*=rt-help-buoy-outline][class*=select2]:before {
+  content: "\e969";
+}
+[id*=rt-exchange-1][class*=select2]:before {
+  content: "\e96a";
+}
+[id*=rt-call-center-24-7][class*=select2]:before {
+  content: "\e96b";
+}
+[id*=rt-headphone-24-7][class*=select2]:before {
+  content: "\e96c";
+}
+[id*=rt-credit-card-secure1][class*=select2]:before {
+  content: "\e96d";
+}
+[id*=rt-payment-security][class*=select2]:before {
+  content: "\e96e";
+}
+[id*=rt-logo-vk][class*=select2]:before {
+  content: "\e96f";
+}
+[id*=rt-logo-whatsapp][class*=select2]:before {
+  content: "\e970";
+}
+[id*=rt-logo-telegram][class*=select2]:before {
+  content: "\e971";
+}
+[id*=rt-play-outline][class*=select2]:before {
+  content: "\e972";
+}
+[id*=rt-videocam-outline][class*=select2]:before {
+  content: "\e973";
+}
+[id*=rt-play-circle][class*=select2]:before {
+  content: "\e974";
+}
+[id*=rt-home-outline][class*=select2]:before {
+  content: "\e975";
+}
+[id*=rt-diamond-outline][class*=select2]:before {
+  content: "\e976";
+}
+[id*=rt-camera-outline][class*=select2]:before {
+  content: "\e977";
+}
+[id*=rt-fitness-outline][class*=select2]:before {
+  content: "\e978";
+}
+[id*=rt-medkit-outline][class*=select2]:before {
+  content: "\e979";
+}
+[id*=rt-nuclear-outline][class*=select2]:before {
+  content: "\e97a";
+}
+[id*=rt-shirt-outline][class*=select2]:before {
+  content: "\e97b";
+}
+[id*=rt-watch-outline][class*=select2]:before {
+  content: "\e97c";
+}
+[id*=rt-couch-solid][class*=select2]:before {
+  content: "\e97d";
+}
+[id*=rt-filter-outline][class*=select2]:before {
+  content: "\e97e";
+}
+[id*=rt-options-outline][class*=select2]:before {
+  content: "\e97f";
+}
+[id*=rt-chatbox-outline][class*=select2]:before {
+  content: "\e980";
+}
+[id*=rt-chatbubble-outline][class*=select2]:before {
+  content: "\e981";
+}
+[id*=rt-logo-behance][class*=select2]:before {
+  content: "\e982";
+}
+[id*=rt-logo-flickr][class*=select2]:before {
+  content: "\e983";
+}
+[id*=rt-logo-foursquare][class*=select2]:before {
+  content: "\e984";
+}

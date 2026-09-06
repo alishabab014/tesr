@@ -1,0 +1,62 @@
+.elementor-control-type-rt-choose {
+
+}
+.rt-control-input-wrapper {
+	display: block;
+	margin-top: 10px;
+}
+.elementor-control-type-rt-choose .rt-control-field{
+	display: block;
+}
+.elementor-control-type-rt-choose .rt-choices{
+	height: auto;
+	display: block;
+}
+.elementor-control-type-rt-choose .rt-control-unit-1 {
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.rt-choices input {
+	display: none;
+}
+.rt-choices input + .rt-choices-label img {
+	border: 1px solid #f1f1f1;
+}
+.rt-choices input + .rt-choices-label img:hover {
+	cursor: pointer;
+}
+.rt-choices input:checked + .rt-choices-label img{
+	-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+    border: 1px solid #3498DB;
+}
+.rt-choices input:checked + .rt-choices-label:after {
+	content : '\f058';
+	font-family: 'Font Awesome 5 Free';
+    font-weight: 500;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: #00da1e;
+    font-size: 18px;
+}
+
+.rt-screen-only {
+	display: block;
+	text-align: center;
+}
+.elementor-control-type-rt-choose .width-25 {
+	width: 25%;
+}
+.elementor-control-type-rt-choose .width-30 {
+	width: 30%;
+}
+.elementor-control-type-rt-choose .width-50 {
+	width: 45%;
+	display: inline-block;
+	margin-right: 10px;
+}
+.elementor-control-type-rt-choose .width-100 {
+	width: 100%;
+}
