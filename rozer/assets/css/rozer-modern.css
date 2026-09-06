@@ -318,7 +318,29 @@ a { transition: color .25s var(--rm-ease); }
 	transform: translateY(-2px);
 }
 
-/* ---------- Single product: tabs, quantity input, gallery ---------- */
+/* ---------- Single product: title, tabs, quantity input, gallery ---------- */
+
+.summary .product_title,
+.product_title.entry-title {
+	display: inline-block;
+	background: linear-gradient(120deg, var(--rm-cool) 0%, var(--rm-cool-light) 100%) !important;
+	color: #fff !important;
+	padding: 16px 22px !important;
+	border-radius: var(--rm-radius-sm);
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	font-size: 1.5rem !important;
+	box-shadow: var(--rm-shadow);
+}
+
+.summary .price ins {
+	color: var(--rm-cool) !important;
+}
+
+.summary .price del {
+	color: #bcbdc6 !important;
+	font-weight: 400;
+}
 
 .woocommerce-tabs .tabs li a {
 	font-weight: 600;
