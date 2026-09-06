@@ -32,7 +32,7 @@ if( ! function_exists( 'rozer_enqueue_styles' ) ) {
         wp_enqueue_style( 'bootstrap', ROZER_THEME_URI . '/assets/css/bootstrap-rt.css', array(), '4.0.0');
         wp_enqueue_style( 'slick', ROZER_THEME_URI . '/assets/css/slick.css', array(), '1.5.9' );
         wp_enqueue_style( 'mgf', ROZER_THEME_URI . '/assets/css/magnific-popup.css', array(), '1.1.0' );
-        wp_enqueue_style( 'rozer-theme', ROZER_THEME_URI . '/assets/css/theme.css', array(), ROZER_VERSION);
+        wp_enqueue_style( 'rozer-theme', ROZER_THEME_URI . '/assets/css/theme.css', array(), ROZER_VERSION);        wp_enqueue_style( 'rozer-modern', ROZER_THEME_URI . '/assets/css/rozer-modern.css', array('rozer-theme'), ROZER_VERSION );
 		wp_enqueue_style( 'rt-icons', ROZER_THEME_URI . '/assets/css/roadthemes-icon.css', array(), ROZER_VERSION );
     }
     add_action( 'wp_enqueue_scripts', 'rozer_enqueue_styles', 10 );

@@ -1,0 +1,328 @@
+/*
+ * Rozer Modern Skin
+ * Sleek visual refresh layered on top of theme.css (loaded after it, so
+ * rules here win on equal specificity). Purely cosmetic: colors, spacing,
+ * typography, shadows, radii and hover motion — no markup/JS dependency
+ * beyond the class names theme.css already defines.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+	--rm-accent: var(--primarycolor, #d6272c);
+	--rm-accent-dark: #a81e22;
+	--rm-ink: #1c1d21;
+	--rm-muted: #767782;
+	--rm-surface: #ffffff;
+	--rm-surface-tint: #f6f7fb;
+	--rm-border: #ececf1;
+	--rm-radius: 14px;
+	--rm-radius-sm: 8px;
+	--rm-shadow: 0 6px 24px rgba(20, 20, 30, 0.06);
+	--rm-shadow-hover: 0 16px 36px rgba(20, 20, 30, 0.12);
+	--rm-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	color: var(--rm-ink);
+}
+
+h1, h2, h3, h4, h5, h6,
+.page-title, .product-title h6 {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+}
+
+a { transition: color .25s var(--rm-ease); }
+
+/* ---------- Topbar ---------- */
+
+.topbar-header {
+	background: linear-gradient(90deg, #16171b 0%, #232429 100%);
+	font-size: .8rem;
+	letter-spacing: .02em;
+}
+
+/* ---------- Breadcrumb ---------- */
+
+.breadcrumb {
+	background: var(--rm-surface-tint);
+	padding: 18px 0;
+	font-size: .85rem;
+	font-weight: 500;
+}
+
+.breadcrumb ul>li+li:before {
+	color: #c7c8d1;
+}
+
+.breadcrumb a {
+	color: var(--rm-muted);
+}
+
+.breadcrumb a:hover {
+	color: var(--rm-accent);
+}
+
+/* ---------- Category / shop title banner ---------- */
+
+.page-title-wrapper,
+.page-title-section {
+	position: relative;
+	background: linear-gradient(120deg, var(--rm-ink) 0%, #303138 100%);
+	border-radius: var(--rm-radius);
+	padding: 46px 40px !important;
+	margin: 24px 0 32px !important;
+	overflow: hidden;
+	box-shadow: var(--rm-shadow);
+}
+
+.page-title-wrapper:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .08), transparent 55%);
+	pointer-events: none;
+}
+
+.page-title-wrapper .page-title,
+.page-title-section .page-title {
+	color: #fff !important;
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	font-size: 1.9rem;
+	margin: 0 !important;
+}
+
+.page-title-wrapper .woocommerce-breadcrumb,
+.page-title-wrapper .breadcrumb {
+	background: transparent;
+	padding: 0;
+	margin-top: 10px;
+}
+
+/* ---------- Toolbar (view mode / result count / sorting) ---------- */
+
+.toolbar {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius-sm);
+	padding: 14px 18px;
+	box-shadow: var(--rm-shadow);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 16px;
+}
+
+.toolbar .view-mode {
+	float: none;
+	display: flex;
+	gap: 6px;
+}
+
+.toolbar .view-mode > button {
+	width: 34px;
+	height: 34px;
+	border-radius: var(--rm-radius-sm);
+	background: var(--rm-surface-tint);
+	transition: background .2s var(--rm-ease), color .2s var(--rm-ease);
+}
+
+.toolbar .view-mode > button.active,
+.toolbar .view-mode > button:hover {
+	background: var(--rm-ink);
+}
+
+.toolbar .woocommerce-result-count {
+	color: var(--rm-muted);
+	font-size: .85rem;
+	margin: 0 !important;
+}
+
+.toolbar .woocommerce-ordering {
+	margin-left: auto !important;
+}
+
+.toolbar .orderby {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: 999px !important;
+	padding: 8px 34px 8px 16px !important;
+	font-size: .82rem;
+	font-weight: 500;
+	background-color: var(--rm-surface-tint) !important;
+	cursor: pointer;
+}
+
+/* ---------- Product grid cards ---------- */
+
+.product-inner.product-grid {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	overflow: hidden;
+	transition: transform .35s var(--rm-ease), box-shadow .35s var(--rm-ease);
+}
+
+.product-inner.product-grid:hover {
+	transform: translateY(-6px);
+	box-shadow: var(--rm-shadow-hover);
+	border-color: transparent;
+}
+
+.product-inner .product-image {
+	background: var(--rm-surface-tint);
+	overflow: hidden;
+}
+
+.product-inner .product-image img {
+	transition: transform .5s var(--rm-ease);
+}
+
+.product-inner.product-grid:hover .product-image img {
+	transform: scale(1.06);
+}
+
+.product-labels span,
+.onsale {
+	border-radius: 999px !important;
+	font-size: .68rem !important;
+	font-weight: 600 !important;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+	padding: 5px 12px !important;
+}
+
+.action-links ul {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.action-links a {
+	border-radius: 50% !important;
+	background: #fff !important;
+	box-shadow: 0 4px 14px rgba(20, 20, 30, .14);
+	transition: background .25s var(--rm-ease), color .25s var(--rm-ease), transform .25s var(--rm-ease);
+}
+
+.action-links a:hover {
+	background: var(--rm-accent) !important;
+	color: #fff !important;
+	transform: translateY(-2px);
+}
+
+.product-content {
+	padding: 18px 16px 20px;
+}
+
+.product-category {
+	color: var(--rm-muted);
+	font-size: .7rem;
+	font-weight: 600;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+
+.product-title h6 {
+	font-size: .92rem;
+	font-weight: 500;
+	line-height: 1.4;
+	margin: 0 0 8px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.product-title h6 a {
+	color: var(--rm-ink);
+}
+
+.product-title h6 a:hover {
+	color: var(--rm-accent);
+}
+
+.product-price .price {
+	font-weight: 600;
+}
+
+.product-price .price ins {
+	color: var(--rm-accent);
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.product-price .price del {
+	color: #bcbdc6;
+	font-weight: 400;
+	margin-right: 6px;
+}
+
+.product-cart {
+	margin-top: 12px;
+}
+
+.product-cart a.button,
+.product-cart a.add_to_cart_button {
+	display: block;
+	width: 100%;
+	text-align: center;
+	border-radius: 999px;
+	padding: 10px 14px;
+	font-size: .82rem;
+	font-weight: 600;
+	letter-spacing: .02em;
+	text-transform: uppercase;
+	background: var(--rm-ink);
+	color: #fff;
+	border: 0;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.product-cart a.button:hover,
+.product-cart a.add_to_cart_button:hover {
+	background: var(--rm-accent);
+	transform: translateY(-2px);
+}
+
+/* ---------- Pagination ---------- */
+
+.woocommerce-pagination .page-numbers li .page-numbers,
+.rozer-pagination .page-numbers li .page-numbers {
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	border-radius: 50% !important;
+	background: var(--rm-surface-tint);
+	font-weight: 600;
+	transition: background .25s var(--rm-ease), color .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.woocommerce-pagination .page-numbers li .page-numbers.current,
+.woocommerce-pagination .page-numbers li .page-numbers:hover,
+.rozer-pagination .page-numbers li .page-numbers.current,
+.rozer-pagination .page-numbers li .page-numbers:hover {
+	background: var(--rm-ink);
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer,
+.footer-widgets {
+	background: var(--rm-surface-tint);
+}
+
+.site-footer h4,
+.site-footer .widget-title {
+	font-weight: 600;
+	letter-spacing: .02em;
+}
+
+.site-footer a:hover {
+	color: var(--rm-accent);
+}
