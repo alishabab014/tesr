@@ -66,11 +66,11 @@ if ( ! $product ) return;
 				</div>
 
 				<?php woocommerce_template_single_add_to_cart(); ?>
-
-				<?php woocommerce_upsell_display( 4, 4 ); // same upsell products, moved up next to Add to Cart ?>
 			</div>
 		</div>
 	</div>
+
+	<?php woocommerce_upsell_display( 4, 4 ); // same upsell products, kept above the tabs instead of at the page bottom -- full width so cards render properly instead of squeezed into the buy-box column ?>
 
 	<?php
 	/**
