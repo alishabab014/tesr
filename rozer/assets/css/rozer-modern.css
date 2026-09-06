@@ -3,14 +3,21 @@
  * Sleek visual refresh layered on top of theme.css (loaded after it, so
  * rules here win on equal specificity). Purely cosmetic: colors, spacing,
  * typography, shadows, radii and hover motion — no markup/JS dependency
- * beyond the class names theme.css already defines.
+ * beyond the class names theme.css / WooCommerce already define.
+ *
+ * Palette matches the site's existing custom single-product page (navy,
+ * not black) so the shop, cart, checkout and account pages read as one
+ * consistent "cool" look instead of clashing with it.
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-	--rm-accent: var(--primarycolor, #d6272c);
-	--rm-accent-dark: #a81e22;
+	--rm-cool: #1d3a6e;
+	--rm-cool-light: #2c5aa0;
+	--rm-cool-soft: #eef2f9;
+	--rm-gold: #f5a623;
+	--rm-green: #1a9c4a;
 	--rm-ink: #1c1d21;
 	--rm-muted: #767782;
 	--rm-surface: #ffffff;
@@ -39,7 +46,7 @@ a { transition: color .25s var(--rm-ease); }
 /* ---------- Topbar ---------- */
 
 .topbar-header {
-	background: linear-gradient(90deg, #16171b 0%, #232429 100%);
+	background: linear-gradient(90deg, var(--rm-cool) 0%, var(--rm-cool-light) 100%);
 	font-size: .8rem;
 	letter-spacing: .02em;
 }
@@ -62,7 +69,7 @@ a { transition: color .25s var(--rm-ease); }
 }
 
 .breadcrumb a:hover {
-	color: var(--rm-accent);
+	color: var(--rm-cool);
 }
 
 /* ---------- Category / shop title banner ---------- */
@@ -70,7 +77,7 @@ a { transition: color .25s var(--rm-ease); }
 .page-title-wrapper,
 .page-title-section {
 	position: relative;
-	background: linear-gradient(120deg, var(--rm-ink) 0%, #303138 100%);
+	background: linear-gradient(120deg, var(--rm-cool) 0%, var(--rm-cool-light) 100%);
 	border-radius: var(--rm-radius);
 	padding: 46px 40px !important;
 	margin: 24px 0 32px !important;
@@ -82,7 +89,7 @@ a { transition: color .25s var(--rm-ease); }
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .08), transparent 55%);
+	background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .12), transparent 55%);
 	pointer-events: none;
 }
 
@@ -132,7 +139,7 @@ a { transition: color .25s var(--rm-ease); }
 
 .toolbar .view-mode > button.active,
 .toolbar .view-mode > button:hover {
-	background: var(--rm-ink);
+	background: var(--rm-cool);
 }
 
 .toolbar .woocommerce-result-count {
@@ -155,7 +162,7 @@ a { transition: color .25s var(--rm-ease); }
 	cursor: pointer;
 }
 
-/* ---------- Product grid cards ---------- */
+/* ---------- Product grid cards (shop, related, upsells, cross-sells) ---------- */
 
 .product-inner.product-grid {
 	background: var(--rm-surface);
@@ -192,6 +199,7 @@ a { transition: color .25s var(--rm-ease); }
 	letter-spacing: .03em;
 	text-transform: uppercase;
 	padding: 5px 12px !important;
+	background: var(--rm-cool) !important;
 }
 
 .action-links ul {
@@ -208,7 +216,7 @@ a { transition: color .25s var(--rm-ease); }
 }
 
 .action-links a:hover {
-	background: var(--rm-accent) !important;
+	background: var(--rm-cool) !important;
 	color: #fff !important;
 	transform: translateY(-2px);
 }
@@ -242,7 +250,7 @@ a { transition: color .25s var(--rm-ease); }
 }
 
 .product-title h6 a:hover {
-	color: var(--rm-accent);
+	color: var(--rm-cool);
 }
 
 .product-price .price {
@@ -250,7 +258,7 @@ a { transition: color .25s var(--rm-ease); }
 }
 
 .product-price .price ins {
-	color: var(--rm-accent);
+	color: var(--rm-cool);
 	text-decoration: none;
 	font-weight: 700;
 }
@@ -276,7 +284,7 @@ a { transition: color .25s var(--rm-ease); }
 	font-weight: 600;
 	letter-spacing: .02em;
 	text-transform: uppercase;
-	background: var(--rm-ink);
+	background: var(--rm-cool);
 	color: #fff;
 	border: 0;
 	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
@@ -284,7 +292,7 @@ a { transition: color .25s var(--rm-ease); }
 
 .product-cart a.button:hover,
 .product-cart a.add_to_cart_button:hover {
-	background: var(--rm-accent);
+	background: var(--rm-cool-light);
 	transform: translateY(-2px);
 }
 
@@ -305,9 +313,258 @@ a { transition: color .25s var(--rm-ease); }
 .woocommerce-pagination .page-numbers li .page-numbers:hover,
 .rozer-pagination .page-numbers li .page-numbers.current,
 .rozer-pagination .page-numbers li .page-numbers:hover {
-	background: var(--rm-ink);
+	background: var(--rm-cool);
 	color: #fff;
 	transform: translateY(-2px);
+}
+
+/* ---------- Single product: tabs, quantity input, gallery ---------- */
+
+.woocommerce-tabs .tabs li a {
+	font-weight: 600;
+	color: var(--rm-muted) !important;
+}
+
+.woocommerce-tabs .tabs li.active a,
+.woocommerce-tabs .tabs li a:hover {
+	color: var(--rm-cool) !important;
+}
+
+.woocommerce-tabs .tabs li.active a:after {
+	background: var(--rm-cool) !important;
+}
+
+.woocommerce-tabs .panel,
+.woocommerce-Tabs-panel {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	padding: 28px;
+}
+
+.quantity .qty,
+input.qty {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius-sm) !important;
+	text-align: center;
+}
+
+.single_add_to_cart_button,
+button.single_add_to_cart_button {
+	background: var(--rm-cool) !important;
+	border-radius: 999px !important;
+	font-weight: 600 !important;
+	letter-spacing: .02em;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.single_add_to_cart_button:hover {
+	background: var(--rm-cool-light) !important;
+	transform: translateY(-2px);
+}
+
+/* ---------- Cart page ---------- */
+
+table.shop_table {
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	overflow: hidden;
+	box-shadow: var(--rm-shadow);
+}
+
+table.shop_table thead th {
+	background: var(--rm-cool-soft);
+	color: var(--rm-cool);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: .75rem;
+	letter-spacing: .04em;
+	border: 0 !important;
+}
+
+table.shop_table td {
+	border-color: var(--rm-border) !important;
+}
+
+table.shop_table .product-thumbnail img {
+	border-radius: var(--rm-radius-sm);
+}
+
+table.shop_table .remove {
+	color: var(--rm-muted) !important;
+	border-radius: 50% !important;
+	transition: background .2s var(--rm-ease), color .2s var(--rm-ease);
+}
+
+table.shop_table .remove:hover {
+	background: #fdeaea !important;
+	color: #c0392b !important;
+}
+
+.coupon .input-text {
+	border: 1px solid var(--rm-border);
+	border-radius: 999px;
+	padding: 10px 18px;
+}
+
+.cart-collaterals .cart_totals {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	padding: 24px;
+	box-shadow: var(--rm-shadow);
+}
+
+.cart_totals h2 {
+	font-size: 1.1rem;
+}
+
+.cart_totals .order-total .amount {
+	color: var(--rm-cool);
+	font-weight: 700;
+}
+
+.wc-proceed-to-checkout a.checkout-button,
+a.checkout-button {
+	background: var(--rm-cool) !important;
+	border-radius: 999px !important;
+	font-weight: 600 !important;
+	letter-spacing: .02em;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.wc-proceed-to-checkout a.checkout-button:hover,
+a.checkout-button:hover {
+	background: var(--rm-cool-light) !important;
+	transform: translateY(-2px);
+}
+
+.button,
+button.button,
+input.button {
+	border-radius: 999px;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+/* ---------- Checkout page ---------- */
+
+.woocommerce-checkout .woocommerce-billing-fields,
+.woocommerce-checkout .woocommerce-additional-fields,
+.woocommerce-checkout #order_review {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	padding: 24px;
+	box-shadow: var(--rm-shadow);
+}
+
+.woocommerce-checkout .form-row input.input-text,
+.woocommerce-checkout .form-row select,
+.woocommerce-checkout .form-row textarea {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius-sm) !important;
+	padding: 10px 14px !important;
+}
+
+.woocommerce-checkout table.shop_table thead {
+	display: table-header-group;
+}
+
+#payment {
+	background: var(--rm-cool-soft) !important;
+	border-radius: var(--rm-radius) !important;
+}
+
+#payment .payment_methods li {
+	border-color: var(--rm-border) !important;
+}
+
+#place_order {
+	background: var(--rm-cool) !important;
+	border-radius: 999px !important;
+	font-weight: 600 !important;
+	letter-spacing: .02em;
+	padding: 14px 24px !important;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+#place_order:hover {
+	background: var(--rm-cool-light) !important;
+	transform: translateY(-2px);
+}
+
+/* ---------- My account ---------- */
+
+.woocommerce-account .woocommerce-MyAccount-navigation > ul {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius);
+	overflow: hidden;
+	box-shadow: var(--rm-shadow);
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation > ul > li {
+	border-color: var(--rm-border) !important;
+	transition: background .2s var(--rm-ease);
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation > ul > li.is-active,
+.woocommerce-account .woocommerce-MyAccount-navigation > ul > li:hover {
+	background: var(--rm-cool-soft);
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation > ul > li.is-active a,
+.woocommerce-account .woocommerce-MyAccount-navigation > ul > li:hover a {
+	color: var(--rm-cool);
+	font-weight: 600;
+}
+
+.woocommerce-form-login .input-text,
+.woocommerce-form-register .input-text,
+.woocommerce-ResetPassword .input-text {
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius-sm);
+	padding: 10px 14px;
+}
+
+.woocommerce-form-login__submit,
+.woocommerce-form-register__submit,
+.woocommerce-Button {
+	background: var(--rm-cool) !important;
+	border-radius: 999px !important;
+	font-weight: 600 !important;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.woocommerce-form-login__submit:hover,
+.woocommerce-form-register__submit:hover,
+.woocommerce-Button:hover {
+	background: var(--rm-cool-light) !important;
+	transform: translateY(-2px);
+}
+
+table.my_account_orders,
+table.woocommerce-orders-table {
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	overflow: hidden;
+	box-shadow: var(--rm-shadow);
+}
+
+table.my_account_orders thead th,
+table.woocommerce-orders-table thead th {
+	background: var(--rm-cool-soft);
+	color: var(--rm-cool);
+	text-transform: uppercase;
+	font-size: .75rem;
+	letter-spacing: .04em;
+}
+
+.woocommerce-orders-table__cell-order-status mark.order-status {
+	background: var(--rm-cool-soft);
+	color: var(--rm-cool);
+	border-radius: 999px;
+	padding: 4px 12px;
+	font-weight: 600;
 }
 
 /* ---------- Footer ---------- */
@@ -324,5 +581,5 @@ a { transition: color .25s var(--rm-ease); }
 }
 
 .site-footer a:hover {
-	color: var(--rm-accent);
+	color: var(--rm-cool);
 }
