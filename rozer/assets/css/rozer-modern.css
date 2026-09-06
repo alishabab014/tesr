@@ -698,6 +698,17 @@ table.woocommerce-orders-table thead th {
 	font-weight: 600;
 }
 
+/* ---------- Upsells / cross-sells / related products heading ---------- */
+
+.upsells > h2,
+.related > h2,
+.cross-sells > h2 {
+	border-bottom: 2px solid var(--rm-cool) !important;
+	font-weight: 600;
+	padding-bottom: 12px;
+	display: inline-block;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer,
