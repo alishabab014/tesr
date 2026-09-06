@@ -6,6 +6,12 @@ remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_p
 add_action( 'rozer_after_single_product_summary', 'woocommerce_output_product_data_tabs');
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash' );
 /*
+ * Upsells are now shown next to Add to Cart (product-simple.php) instead of
+ * at the bottom of the page, so stop the default bottom placement to avoid
+ * showing them twice.
+ */
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
+/*
  * Product image
  */
 function rozer_get_gallery_image_html( $attachment_id, $main_image = false , $class = '' ) {
@@ -145,28 +151,5 @@ function rozer_product_single_countdown(){
 		$curent_date = strtotime( date( 'Y-m-d H:i:s' ) );
 		if ( $sale_date_end < $curent_date || $curent_date < $sale_date_start ) return;
 		echo '<div class="rozer-product-countdown block-countdown" data-end-date="' . esc_attr( date( 'Y-m-d H:i:s', $sale_date_end ) ) . '"></div>';
-	}
-}
-/*
- * "Buy More, Save More" quantity discount.
- * Matches the tiers shown by the .bmsm-wrap picker in product-simple.php:
- * 2+ units = 10% off, 3+ units = 15% off (per unit, off the current price).
- */
-add_action( 'woocommerce_before_calculate_totals', 'rozer_bmsm_quantity_discount', 20, 1 );
-function rozer_bmsm_quantity_discount( $cart ) {
-	if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
-		return;
-	}
-	if ( did_action( 'woocommerce_before_calculate_totals' ) >= 2 ) {
-		return;
-	}
-	foreach ( $cart->get_cart() as $cart_item ) {
-		$qty = $cart_item['quantity'];
-		if ( $qty < 2 ) {
-			continue;
-		}
-		$discount = $qty >= 3 ? 0.15 : 0.10;
-		$base_price = (float) $cart_item['data']->get_price();
-		$cart_item['data']->set_price( round( $base_price * ( 1 - $discount ), 2 ) );
 	}
 }

@@ -65,34 +65,9 @@ if ( ! $product ) return;
 					<?php woocommerce_template_single_price(); // default WooCommerce price markup ?>
 				</div>
 
-				<?php
-				$bmsm_unit_price = (float) $product->get_price();
-				if ( $bmsm_unit_price > 0 ) :
-					$bmsm_tiers = array(
-						array( 'qty' => 1, 'discount' => 0,    'badge' => '' ),
-						array( 'qty' => 2, 'discount' => 0.10, 'badge' => 'Popular &middot; 10% OFF' ),
-						array( 'qty' => 3, 'discount' => 0.15, 'badge' => 'Best Value &middot; 15% OFF' ),
-					);
-					$bmsm_currency = get_woocommerce_currency_symbol();
-				?>
-				<div class="bmsm-wrap" data-unit-price="<?php echo esc_attr( $bmsm_unit_price ); ?>" data-currency="<?php echo esc_attr( $bmsm_currency ); ?>">
-					<div class="bmsm-heading"><?php esc_html_e( 'Buy More, Save More', 'rozer' ); ?></div>
-					<div class="bmsm-tiers">
-						<?php foreach ( $bmsm_tiers as $tier ) : ?>
-							<label class="bmsm-tier<?php echo 1 === $tier['qty'] ? ' active' : ''; ?>" data-qty="<?php echo esc_attr( $tier['qty'] ); ?>" data-discount="<?php echo esc_attr( $tier['discount'] ); ?>">
-								<?php if ( $tier['badge'] ) : ?>
-									<span class="bmsm-badge"><?php echo wp_kses_post( $tier['badge'] ); ?></span>
-								<?php endif; ?>
-								<input type="radio" name="bmsm_tier" value="<?php echo esc_attr( $tier['qty'] ); ?>" <?php checked( 1, $tier['qty'] ); ?>>
-								<span class="bmsm-tier-qty"><?php echo esc_html( $tier['qty'] ); ?></span>
-							</label>
-						<?php endforeach; ?>
-					</div>
-					<div class="bmsm-total"><?php esc_html_e( 'Total:', 'rozer' ); ?> <span class="bmsm-total-amount"><?php echo wp_kses_post( wc_price( $bmsm_unit_price ) ); ?></span></div>
-				</div>
-				<?php endif; ?>
-
 				<?php woocommerce_template_single_add_to_cart(); ?>
+
+				<?php woocommerce_upsell_display( 4, 4 ); // same upsell products, moved up next to Add to Cart ?>
 			</div>
 		</div>
 	</div>
@@ -139,18 +114,6 @@ if ( ! $product ) return;
 .cpp-price .price del{color:#999;font-weight:400;font-size:18px;margin-right:8px}
 
 .single_add_to_cart_button{display:block;width:100%;padding:14px;border-radius:30px;font-size:16px;font-weight:700;text-align:center;border:none;cursor:pointer;margin-top:6px;background:#1d3a6e;color:#fff}
-
-.bmsm-wrap{margin:16px 0}
-.bmsm-heading{font-weight:700;font-size:15px;color:#111;margin-bottom:8px}
-.bmsm-tiers{display:flex;gap:10px}
-.bmsm-tier{position:relative;flex:1;border:2px solid #e5e7eb;border-radius:10px;padding:14px 8px 10px;text-align:center;cursor:pointer;transition:border-color .2s ease,background .2s ease}
-.bmsm-tier:hover{border-color:#1d3a6e}
-.bmsm-tier.active{border-color:#1d3a6e;background:#f3f6fc}
-.bmsm-tier input{position:absolute;opacity:0;width:0;height:0}
-.bmsm-tier-qty{display:block;font-weight:700;font-size:15px;color:#111}
-.bmsm-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#1d3a6e;color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px}
-.bmsm-total{margin-top:10px;font-size:14px;color:#333}
-.bmsm-total-amount{font-weight:800;color:#1d3a6e}
 </style>
 
 <script>
@@ -171,37 +134,5 @@ document.addEventListener('DOMContentLoaded',function(){
 	setTimeout(function(){
 		jQuery('.cpp-summary.processing').removeClass('processing').unblock();
 	}, 4000);
-
-	// Buy More, Save More tier selector
-	document.querySelectorAll('.bmsm-wrap').forEach(function(wrap){
-		var unitPrice = parseFloat(wrap.getAttribute('data-unit-price')) || 0;
-		var currency = wrap.getAttribute('data-currency') || '';
-		var totalEl = wrap.querySelector('.bmsm-total-amount');
-		var qtyInput = wrap.closest('.cpp-summary').querySelector('.quantity input.qty');
-
-		function formatPrice(amount){
-			return currency + amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-		}
-
-		wrap.querySelectorAll('.bmsm-tier').forEach(function(tier){
-			tier.addEventListener('click', function(){
-				wrap.querySelectorAll('.bmsm-tier').forEach(function(t){ t.classList.remove('active'); });
-				tier.classList.add('active');
-				var radio = tier.querySelector('input[type="radio"]');
-				if (radio) radio.checked = true;
-
-				var qty = parseInt(tier.getAttribute('data-qty'), 10) || 1;
-				var discount = parseFloat(tier.getAttribute('data-discount')) || 0;
-
-				if (qtyInput) {
-					qtyInput.value = qty;
-					qtyInput.dispatchEvent(new Event('change', { bubbles: true }));
-				}
-				if (totalEl) {
-					totalEl.textContent = formatPrice(unitPrice * qty * (1 - discount));
-				}
-			});
-		});
-	});
 });
 </script>
