@@ -66,11 +66,39 @@ if ( ! $product ) return;
 				</div>
 
 				<?php woocommerce_template_single_add_to_cart(); ?>
+
+				<?php
+				$cpp_upsell_products = array();
+				$cpp_upsell_ids = $product->get_upsell_ids();
+				if ( $cpp_upsell_ids ) {
+					foreach ( $cpp_upsell_ids as $cpp_upsell_id ) {
+						$cpp_upsell_product = wc_get_product( $cpp_upsell_id );
+						if ( $cpp_upsell_product && $cpp_upsell_product->is_visible() ) {
+							$cpp_upsell_products[] = $cpp_upsell_product;
+						}
+						if ( count( $cpp_upsell_products ) >= 3 ) {
+							break;
+						}
+					}
+				}
+				?>
+				<?php if ( $cpp_upsell_products ) : ?>
+					<div class="cpp-upsell-mini">
+						<div class="cpp-upsell-mini-heading">You May Also Like</div>
+						<div class="cpp-upsell-mini-list">
+							<?php foreach ( $cpp_upsell_products as $cpp_up ) : ?>
+								<a class="cpp-upsell-mini-item" href="<?php echo esc_url( $cpp_up->get_permalink() ); ?>">
+									<?php echo $cpp_up->get_image( 'thumbnail' ); ?>
+									<span class="cpp-upsell-mini-name"><?php echo esc_html( $cpp_up->get_name() ); ?></span>
+									<span class="cpp-upsell-mini-price"><?php echo wp_kses_post( $cpp_up->get_price_html() ); ?></span>
+								</a>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
-
-	<?php woocommerce_upsell_display( 4, 4 ); // same upsell products, kept above the tabs instead of at the page bottom -- full width so cards render properly instead of squeezed into the buy-box column ?>
 
 	<?php
 	/**
@@ -114,6 +142,15 @@ if ( ! $product ) return;
 .cpp-price .price del{color:#999;font-weight:400;font-size:18px;margin-right:8px}
 
 .single_add_to_cart_button{display:block;width:100%;padding:14px;border-radius:30px;font-size:16px;font-weight:700;text-align:center;border:none;cursor:pointer;margin-top:6px;background:#1d3a6e;color:#fff}
+
+.cpp-upsell-mini{margin-top:18px}
+.cpp-upsell-mini-heading{font-weight:700;font-size:14px;color:#111;margin-bottom:8px}
+.cpp-upsell-mini-list{display:flex;gap:10px}
+.cpp-upsell-mini-item{flex:1;min-width:0;display:block;text-align:center;text-decoration:none;color:inherit;border:1px solid #e5e7eb;border-radius:10px;padding:8px;transition:border-color .2s ease}
+.cpp-upsell-mini-item:hover{border-color:#1d3a6e}
+.cpp-upsell-mini-item img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:6px;margin-bottom:6px}
+.cpp-upsell-mini-name{display:block;font-size:11px;font-weight:600;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cpp-upsell-mini-price{display:block;font-size:12px;font-weight:700;color:#1d3a6e;margin-top:2px}
 </style>
 
 <script>
