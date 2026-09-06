@@ -515,6 +515,115 @@ input.button {
 	transform: translateY(-2px);
 }
 
+/* ---------- Checkout page (WooCommerce Checkout block) ----------
+   Newer WooCommerce stores render checkout via the block editor
+   (wp-block-woocommerce-checkout), which uses wc-block-* classes
+   instead of the classic #order_review / .woocommerce-checkout
+   markup styled above. Both rulesets are kept since either could be
+   in use, but only one will ever match on a given install. */
+
+.wp-block-woocommerce-checkout .wc-block-components-checkout-step {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	padding: 22px 24px;
+	margin-bottom: 18px;
+	box-shadow: var(--rm-shadow);
+}
+
+.wc-block-components-checkout-step__title {
+	font-weight: 600;
+	font-size: 1.05rem;
+}
+
+.wc-block-components-checkout-step__heading-icon {
+	color: var(--rm-cool);
+}
+
+.wc-block-components-text-input input,
+.wc-block-components-textarea textarea,
+.wc-block-components-combobox input,
+.wc-block-components-select select {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius-sm) !important;
+}
+
+.wc-block-components-text-input input:focus,
+.wc-block-components-combobox input:focus {
+	border-color: var(--rm-cool) !important;
+	box-shadow: 0 0 0 3px var(--rm-cool-soft) !important;
+}
+
+.wc-block-components-address-card {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius-sm) !important;
+	padding: 14px 16px !important;
+}
+
+.wc-block-components-address-card__edit {
+	color: var(--rm-cool) !important;
+}
+
+.wc-block-components-radio-control__option {
+	border: 1px solid var(--rm-border) !important;
+	border-radius: var(--rm-radius-sm) !important;
+	transition: border-color .2s var(--rm-ease), background .2s var(--rm-ease);
+}
+
+.wc-block-components-radio-control--highlight-checked .wc-block-components-radio-control__option:has(input:checked),
+.wc-block-components-radio-control__option-checked {
+	border-color: var(--rm-cool) !important;
+	background: var(--rm-cool-soft) !important;
+}
+
+.wc-block-components-radio-control__input:checked {
+	accent-color: var(--rm-cool);
+}
+
+.wc-block-components-checkbox__input:checked + .wc-block-components-checkbox__mark {
+	color: var(--rm-cool);
+}
+
+.wc-block-components-panel__button {
+	color: var(--rm-cool) !important;
+	font-weight: 600;
+}
+
+.wc-block-components-order-summary,
+.wc-block-checkout__sidebar .wc-block-components-panel,
+.wc-block-components-totals-wrapper {
+	background: var(--rm-surface);
+	border: 1px solid var(--rm-border);
+	border-radius: var(--rm-radius);
+	box-shadow: var(--rm-shadow);
+}
+
+.wc-block-components-product-badge {
+	background: var(--rm-cool) !important;
+	color: #fff !important;
+}
+
+.wc-block-components-totals-footer-item .wc-block-components-totals-item__value,
+.wc-block-components-totals-footer-item .wc-block-components-formatted-money-amount {
+	color: var(--rm-cool);
+	font-weight: 700;
+}
+
+.wc-block-components-checkout-place-order-button,
+.wc-block-components-button.wp-element-button {
+	background: var(--rm-cool) !important;
+	border-radius: 999px !important;
+	font-weight: 600 !important;
+	letter-spacing: .02em;
+	transition: background .25s var(--rm-ease), transform .2s var(--rm-ease);
+}
+
+.wc-block-components-checkout-place-order-button:hover,
+.wc-block-components-button.wp-element-button:hover {
+	background: var(--rm-cool-light) !important;
+	transform: translateY(-2px);
+}
+
 /* ---------- My account ---------- */
 
 .woocommerce-account .woocommerce-MyAccount-navigation > ul {
