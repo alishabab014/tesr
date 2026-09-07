@@ -843,6 +843,9 @@ table.woocommerce-orders-table thead th {
 }
 
 .about-intro {
+	display: flex;
+	align-items: center;
+	gap: 40px;
 	background: var(--rm-surface);
 	border: 1px solid var(--rm-border);
 	border-radius: var(--rm-radius);
@@ -851,7 +854,23 @@ table.woocommerce-orders-table thead th {
 	margin-bottom: 32px;
 }
 
-.about-intro h2 {
+.about-intro-image {
+	flex: 0 0 300px;
+}
+
+.about-intro-image img {
+	width: 100%;
+	height: auto;
+	border-radius: var(--rm-radius);
+	display: block;
+}
+
+.about-intro-content {
+	flex: 1;
+	min-width: 0;
+}
+
+.about-intro-content h2 {
 	color: var(--rm-cool);
 	font-size: 1.4rem;
 	margin: 0 0 16px;
@@ -859,14 +878,24 @@ table.woocommerce-orders-table thead th {
 	letter-spacing: .04em;
 }
 
-.about-intro p {
+.about-intro-content p {
 	color: #444;
 	line-height: 1.8;
 	margin: 0 0 16px;
 }
 
-.about-intro p:last-child {
+.about-intro-content p:last-child {
 	margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+	.about-intro {
+		flex-direction: column;
+	}
+	.about-intro-image {
+		flex: 0 0 auto;
+		width: 100%;
+	}
 }
 
 .about-values {
