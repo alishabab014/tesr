@@ -29,21 +29,23 @@ get_header();
 				</div>
 			</section>
 
-			<section class="about-values">
-				<div class="about-value-card">
-					<span class="about-value-badge">01</span>
-					<h3><?php esc_html_e( 'Our Goal', 'rozer' ); ?></h3>
-					<p><?php esc_html_e( 'We derive our energy on the path of growth from our determination. By showing our determination and courage, we are moving towards our goals with fast steps.', 'rozer' ); ?></p>
-				</div>
-				<div class="about-value-card">
-					<span class="about-value-badge">02</span>
-					<h3><?php esc_html_e( 'Success', 'rozer' ); ?></h3>
-					<p><?php esc_html_e( 'We know that the first element of success is believing and only people who believe are successful. In order to achieve success, we are advancing towards our goals with determination and relentlessly.', 'rozer' ); ?></p>
-				</div>
-			</section>
-
 		</div>
 	</div>
+
+	<section class="about-values-section">
+		<div class="about-values">
+			<div class="about-value-card">
+				<span class="about-value-badge">01</span>
+				<h3><?php esc_html_e( 'Our Goal', 'rozer' ); ?></h3>
+				<p><?php esc_html_e( 'We derive our energy on the path of growth from our determination. By showing our determination and courage, we are moving towards our goals with fast steps.', 'rozer' ); ?></p>
+			</div>
+			<div class="about-value-card">
+				<span class="about-value-badge">02</span>
+				<h3><?php esc_html_e( 'Success', 'rozer' ); ?></h3>
+				<p><?php esc_html_e( 'We know that the first element of success is believing and only people who believe are successful. In order to achieve success, we are advancing towards our goals with determination and relentlessly.', 'rozer' ); ?></p>
+			</div>
+		</div>
+	</section>
 </div>
 
 <?php
