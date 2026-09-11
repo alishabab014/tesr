@@ -15,6 +15,30 @@ function rozer_product_per_page() {
 }
 add_filter( 'loop_shop_per_page', 'rozer_product_per_page', 20 );
 /**
+ * Push out-of-stock products to the end of shop/category listings.
+ * Skips sort modes that already need their own meta_key (popularity, rating,
+ * price) so those aren't disturbed; covers the default and "latest" sorts.
+ */
+function rozer_out_of_stock_last( $args ) {
+	if ( ! empty( $args['meta_key'] ) ) {
+		return $args;
+	}
+
+	$existing_order = ! empty( $args['order'] ) ? $args['order'] : 'ASC';
+	$orderby        = array( 'meta_value' => 'ASC' ); // _stock_status: instock < onbackorder < outofstock
+
+	foreach ( array_filter( explode( ' ', $args['orderby'] ) ) as $field ) {
+		$orderby[ $field ] = $existing_order;
+	}
+
+	$args['orderby']  = $orderby;
+	$args['meta_key'] = '_stock_status'; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+	unset( $args['order'] );
+
+	return $args;
+}
+add_filter( 'woocommerce_get_catalog_ordering_args', 'rozer_out_of_stock_last' );
+/**
  * rozer_before_shop_content hook
  */
 add_action('rozer_before_shop_content', 'rozer_get_category_thumbnail', 10);
