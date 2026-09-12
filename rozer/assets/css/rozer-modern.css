@@ -962,3 +962,31 @@ table.woocommerce-orders-table thead th {
 		gap: 20px;
 	}
 }
+
+/* ---------- Search results product grid ---------- */
+
+body.search-results .archive-products-wrapper .archive-products.products {
+	display: grid !important;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 24px;
+}
+
+body.search-results .archive-products-wrapper .archive-products.products > div[class*="col-"] {
+	width: 100% !important;
+	max-width: 100% !important;
+	flex: none !important;
+	padding: 0 !important;
+}
+
+@media (max-width: 1199px) {
+	body.search-results .archive-products-wrapper .archive-products.products {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 767px) {
+	body.search-results .archive-products-wrapper .archive-products.products {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
+	}
+}
