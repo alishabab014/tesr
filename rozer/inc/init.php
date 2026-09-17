@@ -24,6 +24,7 @@ include_once ROZER_THEME_DIR . '/inc/frontend/woocommerce/wc-single-product.php'
 include_once ROZER_THEME_DIR . '/inc/frontend/woocommerce/wc-catalog-product.php';
 include_once ROZER_THEME_DIR . '/inc/frontend/woocommerce/swatches-variant.php';
 include_once ROZER_THEME_DIR . '/inc/frontend/woocommerce/variant-gallery.php';
+include_once ROZER_THEME_DIR . '/inc/frontend/woocommerce/wc-whatsapp-notify.php';
 };
 if( ! function_exists( 'rozer_enqueue_styles' ) ) {
     function rozer_enqueue_styles() {
