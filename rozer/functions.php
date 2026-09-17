@@ -195,3 +195,107 @@ function rozer_icon_elementor(){
 	);
 }
 add_filter('elementor/icons_manager/additional_tabs', 'rozer_icon_elementor', 100);
+/**
+ * ------------------------------------------------------------------------------------------------
+ * WhatsApp order notification (Meta WhatsApp Cloud API)
+ * ------------------------------------------------------------------------------------------------
+ * Credentials are entered via Appearance > Customize > WooCommerce > WhatsApp Notification,
+ * not hardcoded here, so they never end up in this file / version control.
+ */
+Kirki::add_section( 'whatsapp_notify', array(
+	'title' => esc_html__( 'WhatsApp Notification', 'rozer' ),
+	'panel' => 'woocommerce',
+) );
+Kirki::add_field( 'option', array(
+	'type'        => 'text',
+	'settings'    => 'whatsapp_access_token',
+	'label'       => esc_html__( 'WhatsApp Access Token', 'rozer' ),
+	'description' => esc_html__( 'From Meta App Dashboard > WhatsApp > API Setup.', 'rozer' ),
+	'section'     => 'whatsapp_notify',
+	'default'     => '',
+) );
+Kirki::add_field( 'option', array(
+	'type'        => 'text',
+	'settings'    => 'whatsapp_phone_number_id',
+	'label'       => esc_html__( 'WhatsApp Phone Number ID', 'rozer' ),
+	'section'     => 'whatsapp_notify',
+	'default'     => '',
+) );
+Kirki::add_field( 'option', array(
+	'type'        => 'text',
+	'settings'    => 'whatsapp_admin_number',
+	'label'       => esc_html__( 'Admin WhatsApp Number', 'rozer' ),
+	'description' => esc_html__( 'Country code, no leading + or 0. Example: 923189305684', 'rozer' ),
+	'section'     => 'whatsapp_notify',
+	'default'     => '',
+) );
+add_action( 'woocommerce_thankyou', 'aaa_whatsapp_order_notify', 10, 1 );
+function aaa_whatsapp_order_notify( $order_id ) {
+	if ( ! $order_id ) {
+		return;
+	}
+
+	$access_token     = rdt_get_option( 'whatsapp_access_token' );
+	$phone_number_id  = rdt_get_option( 'whatsapp_phone_number_id' );
+	$admin_number     = rdt_get_option( 'whatsapp_admin_number' );
+
+	if ( ! $access_token || ! $phone_number_id || ! $admin_number ) {
+		return;
+	}
+
+	// Avoid sending twice for the same order (e.g. on page refresh).
+	if ( get_post_meta( $order_id, '_aaa_whatsapp_notified', true ) ) {
+		return;
+	}
+
+	$order = wc_get_order( $order_id );
+	if ( ! $order ) {
+		return;
+	}
+
+	$items_text = '';
+	foreach ( $order->get_items() as $item ) {
+		$items_text .= "- {$item->get_name()} x{$item->get_quantity()}\n";
+	}
+
+	$address = $order->has_shipping_address() ? $order->get_formatted_shipping_address() : $order->get_formatted_billing_address();
+	$address = wp_strip_all_tags( str_replace( '<br/>', ', ', $address ) );
+
+	$message = sprintf(
+		"🛒 *New Order #%s*\n\n%s\n*Total:* %s\n*Payment:* %s\n\n*Customer:* %s\n*Phone:* %s\n*Address:* %s",
+		$order->get_order_number(),
+		$items_text,
+		wp_strip_all_tags( $order->get_formatted_order_total() ),
+		$order->get_payment_method_title(),
+		$order->get_formatted_billing_full_name(),
+		$order->get_billing_phone(),
+		$address
+	);
+
+	$response = wp_remote_post( 'https://graph.facebook.com/v20.0/' . $phone_number_id . '/messages', array(
+		'headers' => array(
+			'Authorization' => 'Bearer ' . $access_token,
+			'Content-Type'  => 'application/json',
+		),
+		'body'    => wp_json_encode( array(
+			'messaging_product' => 'whatsapp',
+			'to'                => $admin_number,
+			'type'              => 'text',
+			'text'              => array( 'body' => $message ),
+		) ),
+		'timeout' => 15,
+	) );
+
+	if ( is_wp_error( $response ) ) {
+		error_log( 'AAA WhatsApp notify failed: ' . $response->get_error_message() );
+		return;
+	}
+
+	$code = wp_remote_retrieve_response_code( $response );
+	if ( $code < 200 || $code >= 300 ) {
+		error_log( 'AAA WhatsApp notify failed (' . $code . '): ' . wp_remote_retrieve_body( $response ) );
+		return;
+	}
+
+	update_post_meta( $order_id, '_aaa_whatsapp_notified', 1 );
+}
